@@ -1,0 +1,15 @@
+# Home screen for the Home launcher (home.sh bakes this file into the app).
+# featured <package>   large tile at the top
+# app <package>        grid below, in this order
+# Apps that aren't installed or are disabled are skipped. Apps not listed here
+# don't appear on the home screen.
+
+featured com.descarteslearningclub.portal   # Descartes
+
+app com.android.chrome                       # Chrome
+app com.mediatek.camera                      # Camera
+app com.google.android.apps.photos           # Photos
+app com.google.android.apps.nbu.files        # Files
+app com.google.android.deskclock             # Clock
+app com.google.android.calculator            # Calculator
+app com.android.settings                     # Settings

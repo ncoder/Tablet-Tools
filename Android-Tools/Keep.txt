@@ -16,7 +16,7 @@ com.google.android.calculator                 # Calculator
 ## Needed by the apps above
 com.google.android.webview                    # Android System WebView (renders web content inside apps)
 com.google.android.inputmethod.latin          # Gboard (the only keyboard on the device)
-org.fossify.home                              # Fossify Launcher (home screen; installed by launcher.sh)
+tools.home                                    # Home (home screen built from Layout.txt; installed by home.sh)
 com.android.launcher3                         # Stock launcher (no longer home, but provides Recents)
 com.android.documentsui                       # System file picker (Chrome uploads/downloads)
 com.android.providers.downloads               # Download manager

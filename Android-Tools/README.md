@@ -22,11 +22,14 @@ that are installed, so they can be reused on other tablets after a scan.
 ./debloat.sh Enable             # Re-enable everything debloat.sh disabled
 ./debloat.sh Disable <package>  # Disable / enable a single package
 ./debloat.sh Enable <package>
-./launcher.sh [version]         # Install Fossify Launcher and make it the home app
 ./webapp.sh                     # Build + install the Descartes portal app
 ./webapp.sh <name> <url> <package> <icon-url>   # Same for any other website
+./home.sh [layout-file]         # Build + install the Home launcher from Layout.txt
 ./config.sh                     # Screen timeout 5 min, PIN after 30 min, faster animations
 ```
+
+Setting up a new tablet: `./scan.sh`, `./debloat.sh Disable`, `./webapp.sh`, `./home.sh`,
+`./config.sh`.
 
 `scan.sh` shows the device's launcher apps, the Debloat.txt packages that are still enabled, and
 any launcher app that is in neither list. Review those on a new device and add each one to
@@ -38,25 +41,27 @@ any launcher app that is in neither list. Review those on a new device and add e
 - `Keep.txt`: packages that must stay. `debloat.sh` refuses to disable anything listed here.
 - Packages in neither list (framework, providers, overlays, networking, telephony) are left alone.
 
-What stays in the app drawer: Descartes, Settings, Camera, Chrome, Photos, Files by Google, Clock, Calculator.
-Google Play services, Gboard (the only keyboard), WebView, printing and the core system stay
+- `Layout.txt`: the home screen (see below).
+
+What's left to use: Descartes, Chrome, Camera, Photos, Files by Google, Clock, Calculator and
+Settings. Google Play services, Gboard (the only keyboard), WebView, printing and the core system stay
 enabled in the background.
 
 ## Notes
 
 - **No Play Store means no automatic updates** for Chrome, WebView, Gboard and Google Play
   services. To update one, download the APK and run `adb install -r <file>.apk`.
-- **Launcher:** the stock launcher's Google search bar can't be removed and stops working once
-  the Google app is disabled, so `launcher.sh` installs
-  [Fossify Launcher](https://github.com/FossifyOrg/Launcher) from its GitHub releases and makes it
-  the home app. The stock launcher stays enabled because it provides the Recents screen. Downloaded
-  APKs are cached in `apks/`.
+- **Home screen:** `home.sh` builds a small launcher (source in `Home/`) from `Layout.txt`: one
+  large featured tile (Descartes) and a grid of apps, in file order. Only listed apps appear and
+  there's no app drawer, so students can't move or remove icons. To change the home screen, edit
+  `Layout.txt` and re-run `./home.sh`. The stock launcher stays enabled because it provides the
+  Recents screen.
 - **Web apps:** `webapp.sh` builds a tiny APK (source in `WebApp/`) whose icon opens the site in
-  Chrome, reusing one tab instead of opening a new one each time. It needs the Android SDK
-  (build-tools + a platform) and a JDK; no Android Studio or Gradle. The signing key is created in
-  `WebApp/webapp.keystore` on first build (gitignored). A copy signed on another machine is
-  uninstalled and replaced automatically. Place the icon on the home screen by dragging it from the
-  app drawer.
+  Chrome, reusing one tab instead of opening a new one each time.
+- **Building:** `home.sh` and `webapp.sh` share `lib/apk.sh`, which needs the Android SDK
+  (build-tools + a platform; set `ANDROID_HOME` if it isn't in the default location) and a JDK,
+  but no Android Studio or Gradle. The signing key is created as `apk.keystore` on the first build
+  (gitignored). A copy signed on another machine is uninstalled and replaced automatically.
 - **Lock timeout:** `config.sh` sets "Lock after screen timeout" to 30 minutes, but pressing the
   power button still locks immediately unless "Power button instantly locks" is turned off in
   Settings > Security > Screen lock (gear icon); that switch can't be changed over ADB.
