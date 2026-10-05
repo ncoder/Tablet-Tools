@@ -46,7 +46,7 @@ debloat () {
             adb shell pm clear --user 0 "$app" >/dev/null 2>&1;;
         Enable)
             # Only undo disable-user (enabled=3); leave factory-disabled packages (enabled=2) alone
-            state=$(adb shell "dumpsys package $app 2>/dev/null | grep -m1 ' User 0:'" | grep -o 'enabled=[0-9]')
+            state=$(adb shell "dumpsys package $app 2>/dev/null | grep -m1 ' User 0: .*enabled='" | grep -o 'enabled=[0-9]')
             if [ "$state" != "enabled=3" ]; then
                 [ -n "$single" ] && printf "%s\n" "Not user-disabled, left as is: $app"
                 return

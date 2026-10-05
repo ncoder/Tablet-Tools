@@ -7,14 +7,16 @@
 com.android.settings                          # Settings
 com.mediatek.camera                           # Camera
 com.android.chrome                            # Chrome
-com.google.android.apps.nbu.files             # Files by Google (file browser; opens photos, videos, PDFs)
+com.google.android.apps.nbu.files             # Files by Google (file browser; opens videos, PDFs)
+com.google.android.apps.photos                # Google Photos (gallery; the Camera thumbnail opens it)
 com.google.android.deskclock                  # Clock
 com.google.android.calculator                 # Calculator
 
 ## Needed by the apps above
 com.google.android.webview                    # Android System WebView (renders web content inside apps)
 com.google.android.inputmethod.latin          # Gboard (the only keyboard on the device)
-com.android.launcher3                         # Home screen & app drawer
+org.fossify.home                              # Fossify Launcher (home screen; installed by launcher.sh)
+com.android.launcher3                         # Stock launcher (no longer home, but provides Recents)
 com.android.documentsui                       # System file picker (Chrome uploads/downloads)
 com.android.providers.downloads               # Download manager
 com.android.providers.downloads.ui            # Downloads
