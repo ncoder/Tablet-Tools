@@ -23,6 +23,9 @@ that are installed, so they can be reused on other tablets after a scan.
 ./debloat.sh Disable <package>  # Disable / enable a single package
 ./debloat.sh Enable <package>
 ./launcher.sh [version]         # Install Fossify Launcher and make it the home app
+./webapp.sh                     # Build + install the Descartes portal app
+./webapp.sh <name> <url> <package> <icon-url>   # Same for any other website
+./config.sh                     # Screen timeout 5 min, PIN after 30 min, faster animations
 ```
 
 `scan.sh` shows the device's launcher apps, the Debloat.txt packages that are still enabled, and
@@ -35,7 +38,7 @@ any launcher app that is in neither list. Review those on a new device and add e
 - `Keep.txt`: packages that must stay. `debloat.sh` refuses to disable anything listed here.
 - Packages in neither list (framework, providers, overlays, networking, telephony) are left alone.
 
-What stays in the app drawer: Settings, Camera, Chrome, Photos, Files by Google, Clock, Calculator.
+What stays in the app drawer: Descartes, Settings, Camera, Chrome, Photos, Files by Google, Clock, Calculator.
 Google Play services, Gboard (the only keyboard), WebView, printing and the core system stay
 enabled in the background.
 
@@ -48,6 +51,15 @@ enabled in the background.
   [Fossify Launcher](https://github.com/FossifyOrg/Launcher) from its GitHub releases and makes it
   the home app. The stock launcher stays enabled because it provides the Recents screen. Downloaded
   APKs are cached in `apks/`.
+- **Web apps:** `webapp.sh` builds a tiny APK (source in `WebApp/`) whose icon opens the site in
+  Chrome, reusing one tab instead of opening a new one each time. It needs the Android SDK
+  (build-tools + a platform) and a JDK; no Android Studio or Gradle. The signing key is created in
+  `WebApp/webapp.keystore` on first build (gitignored). A copy signed on another machine is
+  uninstalled and replaced automatically. Place the icon on the home screen by dragging it from the
+  app drawer.
+- **Lock timeout:** `config.sh` sets "Lock after screen timeout" to 30 minutes, but pressing the
+  power button still locks immediately unless "Power button instantly locks" is turned off in
+  Settings > Security > Screen lock (gear icon); that switch can't be changed over ADB.
 - **Firmware updates** are off (`com.incar.update`). To update, run
   `./debloat.sh Enable com.incar.update`, update, disable it again, and re-run `./scan.sh` in case
   the update brought apps back.

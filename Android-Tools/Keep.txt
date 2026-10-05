@@ -4,6 +4,7 @@
 # Format: package   # label
 
 ## Apps
+com.descarteslearningclub.portal              # Descartes (opens portal.descarteslearningclub.com/offline; installed by webapp.sh)
 com.android.settings                          # Settings
 com.mediatek.camera                           # Camera
 com.android.chrome                            # Chrome
