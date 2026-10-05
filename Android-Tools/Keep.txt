@@ -1,0 +1,47 @@
+# Packages that must stay enabled. debloat.sh refuses to disable anything listed
+# here, and scan.sh marks them "keep". The core system section is a guard against
+# list mistakes, not a full inventory: packages in neither list are left alone.
+# Format: package   # label
+
+## Apps
+com.android.settings                          # Settings
+com.mediatek.camera                           # Camera
+com.android.chrome                            # Chrome
+com.google.android.apps.nbu.files             # Files by Google (file browser; opens photos, videos, PDFs)
+com.google.android.deskclock                  # Clock
+com.google.android.calculator                 # Calculator
+
+## Needed by the apps above
+com.google.android.webview                    # Android System WebView (renders web content inside apps)
+com.google.android.inputmethod.latin          # Gboard (the only keyboard on the device)
+com.android.launcher3                         # Home screen & app drawer
+com.android.documentsui                       # System file picker (Chrome uploads/downloads)
+com.android.providers.downloads               # Download manager
+com.android.providers.downloads.ui            # Downloads
+com.android.providers.media.module            # Media storage (photos, downloads)
+com.google.android.packageinstaller           # Installs/uninstalls APKs
+com.android.captiveportallogin                # Wi-Fi sign-in pages (hotel/school networks)
+
+## Google services (kept for Find My Device, Wi-Fi location, Chrome sync, MDM enrollment)
+com.google.android.gms                        # Google Play services
+com.google.android.gsf                        # Google Services Framework
+
+## Printing (print from Chrome)
+com.android.printspooler                      # Print Spooler
+com.android.bips                              # Default Print Service
+
+## Core system (disabling these can bootloop or break the device)
+android                                       # Android framework
+com.android.systemui                          # Status bar, notifications, navigation
+com.android.phone                             # Telephony service (runs even on Wi-Fi tablets)
+com.android.server.telecom                    # Telecom service
+com.android.providers.settings                # Settings storage
+com.android.permissioncontroller              # Permission prompts
+com.android.shell                             # adb shell
+com.android.bluetooth                         # Bluetooth
+com.android.networkstack                      # Network stack
+com.android.networkstack.tethering            # Tethering
+com.android.externalstorage                   # Storage access
+com.android.mtp                               # USB file transfer
+com.android.keychain                          # Certificate storage
+com.android.location.fused                    # Location

@@ -1,0 +1,58 @@
+# Packages disabled by debloat.sh (only those installed on the device are touched).
+# Format: package   # label
+
+## Google apps
+com.android.vending                           # Google Play Store
+com.google.android.googlequicksearchbox       # Google app (search bar, Discover, Assistant)
+com.google.android.apps.docs                  # Google Drive
+com.google.android.apps.maps                  # Google Maps
+com.google.android.apps.tachyon               # Google Meet
+com.google.android.apps.youtube.music         # YouTube Music
+com.google.android.youtube                    # YouTube
+com.google.android.videos                     # Google TV
+com.google.android.gm                         # Gmail
+com.google.android.keep                       # Google Keep
+com.google.android.calendar                   # Google Calendar
+com.google.android.apps.photos                # Google Photos (Files by Google opens photos instead)
+com.google.android.apps.wellbeing             # Digital Wellbeing
+com.google.android.apps.safetyhub             # Personal Safety
+com.google.android.projection.gearhead        # Android Auto
+com.google.android.marvin.talkback            # Android Accessibility Suite (TalkBack)
+
+## Google background services
+com.google.android.apps.restore               # Data Restore Tool (setup only)
+com.google.android.apps.turbo                 # Device Health Services
+com.google.android.as                         # Android System Intelligence
+com.google.android.as.oss                     # Private Compute Services
+com.google.android.feedback                   # Google Feedback
+com.google.android.gms.location.history       # Google Location History
+com.google.android.partnersetup               # Google Partner Setup
+com.google.android.onetimeinitializer         # Google One Time Init
+com.google.android.tag                        # NFC Tags
+
+## Vendor (FOSSiBOT / MediaTek)
+com.incar.usermanual                          # User Manual
+com.incar.update                              # System Update (FOTA); re-enable to update firmware
+com.android.fmradio                           # FM Radio
+com.android.soundrecorder                     # Sound Recorder
+com.mediatek.aovtestapp                       # AOV Test App
+com.mediatek.engineermode                     # Engineer Mode (hidden diagnostics)
+com.mediatek.factorymode                      # Factory Mode
+com.sprd.factorymode                          # Factory Aging Test
+com.debug.loggerui                            # Debug Logger
+com.mediatek.lbs.em2.ui                       # Location Engineering Mode
+com.mediatek.ygps                             # GPS Test (YGPS)
+com.mediatek.voicecommand                     # Voice Command
+com.mediatek.voiceunlock                      # Voice Unlock
+com.mediatek.callrecorder                     # Call Recorder Service
+com.wapi.wapicertmanager                      # WAPI Certificate Manager
+
+## AOSP extras
+com.android.egg                               # Android Easter Egg
+com.android.dreams.basic                      # Basic Screensavers
+com.android.traceur                           # System Tracing (developer tool)
+com.android.dynsystem                         # Dynamic System Updates
+com.android.bookmarkprovider                  # Bookmark Provider
+com.android.providers.partnerbookmarks        # Partner Bookmarks
+com.android.emergency                         # Emergency Information
+com.android.calllogbackup                     # Call Log Backup
