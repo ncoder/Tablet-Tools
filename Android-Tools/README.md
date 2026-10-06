@@ -57,7 +57,8 @@ enabled in the background.
   `Layout.txt` and re-run `./home.sh`. The stock launcher stays enabled because it provides the
   Recents screen.
 - **Web apps:** `webapp.sh` builds a tiny APK (source in `WebApp/`) whose icon opens the site in
-  Chrome, reusing one tab instead of opening a new one each time.
+  Chrome, reusing one tab instead of opening a new one each time. Without Chrome it uses the
+  default browser.
 - **Building:** `home.sh` and `webapp.sh` share `lib/apk.sh`, which needs the Android SDK
   (build-tools + a platform; set `ANDROID_HOME` if it isn't in the default location) and a JDK,
   but no Android Studio or Gradle. The signing key is created as `apk.keystore` on the first build
@@ -68,4 +69,9 @@ enabled in the background.
 - **Firmware updates** are off (`com.incar.update`). To update, run
   `./debloat.sh Enable com.incar.update`, update, disable it again, and re-run `./scan.sh` in case
   the update brought apps back.
+- **Fire tablets:** `webapp.sh` works (tested on a Fire HD 10, Fire OS 8.3): the app opens in Silk
+  and Fire Launcher adds its icon to the home screen automatically. `home.sh` doesn't: Fire OS
+  sends Home to Fire Launcher whatever the home app setting says, and Fire Launcher is a protected
+  package that can't be disabled. Silk's homepage can't be set over ADB either; it reads
+  `HomepageLocation` only from an MDM's managed configuration.
 - A factory reset re-enables everything; run `./debloat.sh Disable` again afterwards.
