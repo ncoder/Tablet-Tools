@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# Build a small app that opens a website in Chrome, and install it on the device.
+# Build a small app that shows a website full screen (WebView), and install it on the device.
 # Usage: ./webapp.sh [name url package icon-url]
 # Without arguments it builds the Descartes portal app. Set ANDROID_SERIAL to pick a device.
 
