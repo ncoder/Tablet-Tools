@@ -5,3 +5,4 @@ Fire-Tools/Gapps/
 Fire-Tools/packagelist
 main.build
 main.dist
+.venv/
