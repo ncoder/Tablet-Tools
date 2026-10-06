@@ -65,6 +65,10 @@ enabled in the background.
   (build-tools + a platform; set `ANDROID_HOME` if it isn't in the default location) and a JDK,
   but no Android Studio or Gradle. The signing key is created as `apk.keystore` on the first build
   (gitignored). A copy signed on another machine is uninstalled and replaced automatically.
+- **Signing key backup:** `apk.keystore` is backed up in Google Drive under `Apk_Signing`. Before
+  building on another computer, copy it into `Android-Tools/`. Without it, updates have to
+  uninstall the apps first, which wipes the Descartes app's login and downloaded books on every
+  tablet.
 - **Lock timeout:** `config.sh` sets "Lock after screen timeout" to 30 minutes, but pressing the
   power button still locks immediately unless "Power button instantly locks" is turned off in
   Settings > Security > Screen lock (gear icon); that switch can't be changed over ADB.
